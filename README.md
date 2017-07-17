@@ -1,6 +1,6 @@
-# RentMate API Server
+# API Server Base
 
-API server for RentMate
+Base API server
 
 ## Stack
 
