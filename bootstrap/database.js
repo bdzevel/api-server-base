@@ -1,4 +1,4 @@
-const data = require('rent-mate-data');
+const data = require('../data/data');
 const winston = require('winston');
 
 const db = {

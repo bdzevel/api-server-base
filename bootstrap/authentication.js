@@ -15,8 +15,11 @@ function configurePassport() {
   });
 
   passport.use(new LocalStrategy(function(username, password, done) {
-    return User.findOne({ username }).lean()
+    return User.findOne({ username: username.toLowerCase() }).lean()
       .then(function(user) {
+        if (!user) {
+          return done(null, false);
+        }
         return bcrypt.compare(password, user.password)
           .then(function(isEqual) {
             if (!isEqual) {
