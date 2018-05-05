@@ -5,6 +5,7 @@ Base API server
 ## Stack
 
 * [Node.js](https://nodejs.org) as a web server to serve the front end
+* [MongoDB](https://www.mongodb.com/) as the database
 * [Grunt](https://gruntjs.com/) as a task runner, for automation and helpful scripts
     * (I may switch to [Gulp](http://gulpjs.com/) for this at some point)
 * [ESLint](http://eslint.org/) for JS linting (enforced on pre-commit hook)
@@ -24,7 +25,8 @@ I use [Visual Studio Code](https://code.visualstudio.com/) with the following ex
 ### Dependencies
 
 Node.js and NPM.
-Dependencies are mainly managed by npm.
+MongoDB with a database named as you like (make sure to update the .env file).
+Package dependencies are mainly managed by npm.
 You can choose to install the `grunt` command globally for yourself:
 ```
 npm install -g grunt-cli
@@ -37,7 +39,8 @@ npm install -g grunt-cli
     ```
     npm install
     ```
-    2. Copy `.dev.example.env` to `.env`
+    2. Create a MongoDB database
+    3. Copy `.dev.example.env` to `.env` and modify it as needed (namely, DB connection)
 
 2. Code
     1. `bootstrap/` contains bootstrap code for app initialization/startup
@@ -53,8 +56,13 @@ npm install -g grunt-cli
    Note that linting is enforced on a pre-commit hook using [husky](https://github.com/typicode/husky) but it's good to know that you're square before trying to commit
 
 4. Run
-```
-npm start
-```
+    1. Run MongoDB
+    ```
+    mongod
+    ```
+    2. Run the application
+    ```
+    npm start
+    ```
 
    By default this will start on port 3000
